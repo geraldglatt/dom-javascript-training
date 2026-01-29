@@ -1,17 +1,40 @@
 console.log('script chargé');
 
+// =====================
+// Sélection des éléments
+// =====================
 const button = document.querySelector('#btn-action');
 const message = document.querySelector('#message');
 const counterElement = document.querySelector('#counter');
 
+// =====================
+// État de l’application
+// =====================
 let count = 0;
 
-button.addEventListener('click', () => {
-    count = count + 1;
-    message.textContent = 'Le DOM Fonctionne';
-    counterElement.textContent = 'Nombre de clics :  ' + count;
+// =====================
+// Fonctions
+// =====================
+function updateMessage() {
+  message.textContent = 'Le DOM fonctionne 🎉';
+}
 
-    message.focus();
-});
+function updateCounter() {
+  counterElement.textContent = `Nombre de clics : ${count}`;
+}
 
+function focusMessage() {
+  message.focus();
+}
 
+function handleButtonClick() {
+  count += 1;
+  updateMessage();
+  updateCounter();
+  focusMessage();
+}
+
+// =====================
+// Événements
+// =====================
+button.addEventListener('click', handleButtonClick);
